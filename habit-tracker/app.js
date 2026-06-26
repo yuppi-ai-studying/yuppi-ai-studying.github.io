@@ -296,6 +296,55 @@ function toggleHabit(habitId, dateStr) {
     renderHabits();
 }
 
+// --- 名言API連携 ---
+const quoteText = document.getElementById('quote-text');
+const quoteAuthor = document.getElementById('quote-author');
+const btnRefreshQuote = document.getElementById('btn-refresh-quote');
+const quoteContent = document.querySelector('.quote-content');
+
+// 予備の名言リスト（API取得エラー時のフォールバック用）
+const fallbackQuotes = [
+    { meigen: "行動の第一歩は、常に最も困難である。", auther: "作者不明" },
+    { meigen: "あきらめなかったすべての人に、勝利のチャンスがある。", auther: "スティーブ・ジョブズ" },
+    { meigen: "小さいことを重ねることが、とんでもないところに行くただ一つの道。", auther: "イチロー" },
+    { meigen: "昨日から学び、今日を生き、明日を希望する。", auther: "アインシュタイン" },
+    { meigen: "習慣が変われば、人格が変わる。人格が変われば、運命が変わる。", auther: "ウィリアム・ジェームズ" }
+];
+
+async function fetchQuote() {
+    if (!quoteContent || !quoteText || !quoteAuthor) return;
+
+    // フェードアウト効果をかける
+    quoteContent.classList.add('fade-hidden');
+    
+    // アニメーション完了（250ms）を待ってからデータを差し替え
+    setTimeout(async () => {
+        try {
+            // APIリクエスト (日本語名言API)
+            const response = await fetch('https://meigen.doodlenote.net/api/json.php');
+            if (!response.ok) throw new Error('API request failed');
+            
+            const data = await response.json();
+            // 返却値は配列形式: [{"meigen":"...","auther":"..."}]
+            if (data && data.length > 0) {
+                quoteText.textContent = `「${data[0].meigen}」`;
+                quoteAuthor.textContent = `— ${data[0].auther || '不明'}`;
+            } else {
+                throw new Error('Empty data');
+            }
+        } catch (error) {
+            console.error('名言の取得に失敗したため、ローカルから読み込みます:', error);
+            // エラー時はローカルからランダムで選択
+            const randomQuote = fallbackQuotes[Math.floor(Math.random() * fallbackQuotes.length)];
+            quoteText.textContent = `「${randomQuote.meigen}」`;
+            quoteAuthor.textContent = `— ${randomQuote.auther}`;
+        } finally {
+            // フェードイン
+            quoteContent.classList.remove('fade-hidden');
+        }
+    }, 250);
+}
+
 // --- イベントリスナー ---
 habitForm.addEventListener('submit', (e) => {
     e.preventDefault();
@@ -308,4 +357,9 @@ habitForm.addEventListener('submit', (e) => {
 document.addEventListener('DOMContentLoaded', () => {
     loadHabits();
     renderHabits();
+    fetchQuote(); // 名言の初期ロード
+
+    if (btnRefreshQuote) {
+        btnRefreshQuote.addEventListener('click', fetchQuote);
+    }
 });

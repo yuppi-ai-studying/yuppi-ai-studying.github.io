@@ -83,6 +83,73 @@ h1 {
     font-weight: 400;
 }
 
+/* 今日の一言 */
+.quote-section {
+    margin-bottom: 24px;
+}
+
+.quote-card {
+    background: linear-gradient(135deg, #EEF2F6 0%, #E2E8F0 100%);
+    border: 1px solid var(--border-color);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 18px 24px;
+}
+
+.quote-content {
+    flex: 1;
+    transition: opacity 0.25s ease, transform 0.25s ease;
+}
+
+.quote-text {
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: var(--text-main);
+    line-height: 1.6;
+    margin-bottom: 6px;
+}
+
+.quote-author {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    font-weight: 600;
+    text-align: right;
+}
+
+.btn-refresh {
+    background: transparent;
+    border: none;
+    color: var(--text-muted);
+    font-size: 1.1rem;
+    cursor: pointer;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: var(--transition);
+    flex-shrink: 0;
+}
+
+.btn-refresh:hover {
+    background-color: rgba(0, 0, 0, 0.05);
+    color: var(--primary);
+    transform: rotate(180deg);
+}
+
+.btn-refresh:active {
+    transform: scale(0.9) rotate(180deg);
+}
+
+/* フェード効果 (JSで切り替え時に使用) */
+.quote-content.fade-hidden {
+    opacity: 0;
+    transform: translateY(-5px);
+}
+
 /* 新規追加フォーム */
 .add-habit-section {
     margin-bottom: 30px;

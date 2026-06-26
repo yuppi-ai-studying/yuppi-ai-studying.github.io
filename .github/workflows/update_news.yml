@@ -16,6 +16,8 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: write # リポジトリへのプッシュ権限を設定
+    env:
+      TZ: Asia/Tokyo # タイムゾーンを日本時間に設定
 
     steps:
       - name: Checkout repository

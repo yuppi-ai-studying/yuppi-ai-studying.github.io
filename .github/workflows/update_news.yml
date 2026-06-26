@@ -1,0 +1,47 @@
+name: Auto Update News
+
+on:
+  schedule:
+    # 毎日 2:00, 8:00, 14:00, 20:00 JST (日本時間) に実行
+    # UTC (協定世界時) は日本時間から -9時間 です。
+    #  2:00 JST  -> 17:00 UTC (前日)
+    #  8:00 JST  -> 23:00 UTC (前日)
+    # 14:00 JST  -> 05:00 UTC (当日)
+    # 20:00 JST  -> 11:00 UTC (当日)
+    - cron: '0 17,23,5,11 * * *'
+  workflow_dispatch: # GitHub上で手動で動かせるようにする
+
+jobs:
+  update-news:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write # リポジトリへのプッシュ権限を設定
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install requests beautifulsoup4
+
+      - name: Run scraper
+        run: python web_scraper.py
+
+      - name: Commit and push changes
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add news.json news_summary.txt || true
+          if git diff --staged --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "Auto-update news.json via GitHub Actions"
+            git push
+          fi

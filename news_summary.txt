@@ -1,27 +1,27 @@
 ==================================================
- 📰 Yahoo!ニュース 主要トピックス一覧 (取得日時: 2026-06-26 11:43:49)
+ 📰 Yahoo!ニュース 主要トピックス一覧 (取得日時: 2026-06-26 11:56:49)
 ==================================================
 
 [1] 大雨ピークは2回 災害に厳重警戒
     URL: https://news.yahoo.co.jp/pickup/6585791
 
-[2] 家庭用エアコン フロン回収強化へ
+[2] 国旗損壊罪 愛国心醸成と維新議員
+    URL: https://news.yahoo.co.jp/pickup/6585773
+
+[3] 家庭用エアコン フロン回収強化へ
     URL: https://news.yahoo.co.jp/pickup/6585788
 
-[3] 欧州熱波 スペインで200人超死亡
+[4] 欧州熱波 スペインで200人超死亡
     URL: https://news.yahoo.co.jp/pickup/6585767
 
-[4] 大学生を集団暴行の疑い 6人逮捕
+[5] 大学生を集団暴行の疑い 6人逮捕
     URL: https://news.yahoo.co.jp/pickup/6585775
 
-[5] 「発達障害児支援」詐欺疑い逮捕
+[6] 「発達障害児支援」詐欺疑い逮捕
     URL: https://news.yahoo.co.jp/pickup/6585792
 
-[6] 金沢大が教授解雇 1週間で2人目
-    URL: https://news.yahoo.co.jp/pickup/6585782
-
-[7] 「最古のイヌ」の証拠を発見 調査
-    URL: https://news.yahoo.co.jp/pickup/6585784
+[7] 米テキサスでキリンが行方不明に
+    URL: https://news.yahoo.co.jp/pickup/6585793
 
 [8] 長友 引退考えた自分ふざけんな
     URL: https://news.yahoo.co.jp/pickup/6585786

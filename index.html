@@ -402,6 +402,76 @@
     }
     .odometer-icon { font-size: 1rem; }
 
+    /* ── MY PROJECTS ── */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 20px;
+      margin-bottom: 48px;
+      animation: fadeUp 1s 0.45s ease both;
+    }
+    .project-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 24px;
+      display: flex;
+      gap: 20px;
+      align-items: center;
+      box-shadow: var(--shadow);
+      text-decoration: none;
+      color: inherit;
+      transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+    }
+    .project-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 16px 40px rgba(79,142,247,0.15);
+      border-color: var(--primary);
+    }
+    .project-icon-wrap {
+      width: 60px;
+      height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 16px;
+      background: linear-gradient(135deg, #4F8EF715, #A78BFA15);
+      font-size: 2rem;
+      flex-shrink: 0;
+    }
+    .project-info h3 {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 6px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .project-info h3::after {
+      content: '→';
+      font-size: 1rem;
+      transition: transform 0.2s ease;
+    }
+    .project-card:hover .project-info h3::after {
+      transform: translateX(4px);
+    }
+    .project-info p {
+      font-size: 0.88rem;
+      line-height: 1.6;
+      color: var(--muted);
+      margin-bottom: 8px;
+    }
+    .project-tag {
+      display: inline-block;
+      font-size: 0.72rem;
+      font-weight: 600;
+      color: var(--primary);
+      background: #4F8EF712;
+      padding: 3px 10px;
+      border-radius: 999px;
+    }
+
     /* ── WEATHER CARD ── */
     .weather-card {
       background: var(--surface);
@@ -594,6 +664,27 @@
           同じように学ぶ人の力になることを目指しています。
         </p>
       </div>
+    </div>
+
+    <!-- ── MY PROJECTS ── -->
+    <div class="section-title" id="projects" style="margin-top:48px;">
+      💻 作成したアプリ・成果物
+      <span class="line"></span>
+    </div>
+    <div class="projects-grid">
+      <a href="habit-tracker/index.html" class="project-card" id="project-habit-tracker">
+        <div class="project-icon-wrap">
+          <span class="project-icon">📊</span>
+        </div>
+        <div class="project-info">
+          <h3>習慣トラッカー</h3>
+          <p>
+            毎日の小さな積み重ねを記録し、継続日数（ストリーク）を可視化するアプリ。
+            LocalStorageにより、ブラウザを閉じてもデータが安全に保存されます。
+          </p>
+          <span class="project-tag">✨ Phase 2 成果物</span>
+        </div>
+      </a>
     </div>
 
     <!-- ── WEATHER ── -->

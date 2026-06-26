@@ -83,6 +83,163 @@ h1 {
     font-weight: 400;
 }
 
+/* ヘッダー追加スタイル */
+.header-main {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.btn-settings-toggle {
+    background: transparent;
+    border: none;
+    color: var(--text-muted);
+    font-size: 1.3rem;
+    cursor: pointer;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: var(--transition);
+}
+
+.btn-settings-toggle:hover {
+    background-color: var(--primary-light);
+    color: var(--primary);
+    transform: rotate(45deg);
+}
+
+/* 設定パネル */
+.settings-panel {
+    margin-bottom: 24px;
+    animation: fadeIn 0.3s ease-out;
+}
+
+.settings-card {
+    border-left: 4px solid var(--primary);
+    background-color: var(--card-bg);
+}
+
+.settings-card h3 {
+    font-size: 1.05rem;
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: var(--text-main);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.settings-desc {
+    font-size: 0.82rem;
+    color: var(--text-muted);
+    line-height: 1.5;
+    margin-bottom: 14px;
+}
+
+.settings-input-group {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.settings-input-group input {
+    width: 100%;
+    padding: 10px 14px;
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--border-color);
+    outline: none;
+    font-size: 0.9rem;
+    transition: var(--transition);
+}
+
+.settings-input-group input:focus {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+}
+
+.settings-action-btns {
+    display: flex;
+    gap: 10px;
+}
+
+.btn-save-settings {
+    flex: 1;
+    background: var(--primary-gradient);
+    color: white;
+    border: none;
+    padding: 10px 18px;
+    border-radius: var(--radius-sm);
+    font-weight: 600;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.btn-save-settings:hover {
+    filter: brightness(1.05);
+    box-shadow: 0 4px 10px rgba(79, 70, 229, 0.2);
+}
+
+.btn-clear-settings {
+    background-color: #FEE2E2;
+    color: var(--danger);
+    border: 1px solid #FCA5A5;
+    padding: 10px 18px;
+    border-radius: var(--radius-sm);
+    font-weight: 600;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.btn-clear-settings:hover {
+    background-color: #FCA5A5;
+    color: white;
+    border-color: transparent;
+}
+
+.settings-status-msg {
+    font-size: 0.8rem;
+    font-weight: 500;
+    margin-top: 8px;
+}
+
+.settings-status-msg.success {
+    color: var(--success);
+}
+
+.settings-status-msg.error {
+    color: var(--danger);
+}
+
+/* 同期未設定の警告バナー */
+.sync-warning-banner {
+    background-color: #FFFBEB; /* 薄いイエロー */
+    border: 1px solid #FCD34D;
+    color: #B45309;
+    border-radius: var(--radius-sm);
+    padding: 12px 18px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    margin-bottom: 24px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+    transition: var(--transition);
+    animation: fadeIn 0.3s ease-out;
+}
+
+.sync-warning-banner:hover {
+    background-color: #FEF3C7;
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-sm);
+}
+
 /* 今日の一言 */
 .quote-section {
     margin-bottom: 24px;

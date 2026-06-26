@@ -23,13 +23,45 @@
 <body>
     <div class="app-container">
         <!-- ヘッダー -->
-        <header>
-            <div class="logo">
-                <span class="logo-emoji">📊</span>
-                <h1>Habit Tracker</h1>
+        <header class="app-header">
+            <div class="header-main">
+                <div class="logo">
+                    <span class="logo-emoji">📊</span>
+                    <h1>Habit Tracker</h1>
+                </div>
+                <button id="btn-settings-toggle" class="btn-settings-toggle" title="スプレッドシート同期設定">
+                    <i class="fa-solid fa-gear"></i>
+                </button>
             </div>
             <p class="subtitle">毎日の小さな積み重ねを記録しよう</p>
         </header>
+
+        <!-- 設定パネル (初期は非表示) -->
+        <section id="settings-panel" class="settings-panel" style="display: none;">
+            <div class="card settings-card">
+                <h3><i class="fa-solid fa-cloud-arrow-up"></i> Googleスプレッドシート同期設定</h3>
+                <p class="settings-desc">
+                    GASでデプロイした「ウェブアプリのURL（Webhook URL）」を入力すると、
+                    習慣の記録（チェック状態・新規追加・削除）がスプレッドシートへ自動的に同期されます。
+                </p>
+                <form id="settings-form">
+                    <div class="settings-input-group">
+                        <input type="url" id="webhook-url-input" placeholder="https://script.google.com/macros/s/XXXXX/exec" required>
+                        <div class="settings-action-btns">
+                            <button type="submit" class="btn-save-settings">保存</button>
+                            <button type="button" id="btn-clear-settings" class="btn-clear-settings" style="display: none;">連携解除</button>
+                        </div>
+                    </div>
+                </form>
+                <div id="settings-status-msg" class="settings-status-msg"></div>
+            </div>
+        </section>
+
+        <!-- 同期未設定の警告バナー (動的に表示制御) -->
+        <div id="sync-warning-banner" class="sync-warning-banner" style="display: none;">
+            <i class="fa-solid fa-triangle-exclamation"></i>
+            <span>スプレッドシート同期が未設定です。ここをクリックして設定してください。</span>
+        </div>
 
         <!-- 今日の一言 (名言API) -->
         <section class="quote-section">

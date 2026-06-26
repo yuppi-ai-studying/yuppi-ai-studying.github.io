@@ -303,10 +303,21 @@ function toggleHabit(habitId, dateStr) {
     syncToGoogleSheets(habit.name, dateStr, isCompleted ? 'completed' : 'uncompleted');
 }
 
+// Webhook URLを取得（LocalStorageを優先し、無ければconfig.jsを参照する）
+function getWebhookUrl() {
+    const localUrl = localStorage.getItem('yuppi_webhook_url');
+    if (localUrl) return localUrl;
+
+    if (typeof APP_CONFIG !== 'undefined' && APP_CONFIG.GOOGLE_SHEETS_WEBHOOK_URL) {
+        return APP_CONFIG.GOOGLE_SHEETS_WEBHOOK_URL;
+    }
+    return "";
+}
+
 // Googleスプレッドシートへのデータ同期送信
 async function syncToGoogleSheets(habitName, dateStr, status) {
-    // Webhook URLが設定されていない場合は同期をスキップ
-    if (!APP_CONFIG || !APP_CONFIG.GOOGLE_SHEETS_WEBHOOK_URL) {
+    const url = getWebhookUrl();
+    if (!url) {
         console.log('スプレッドシートの同期URLが設定されていません。同期をスキップします。');
         return;
     }
@@ -320,7 +331,7 @@ async function syncToGoogleSheets(habitName, dateStr, status) {
     try {
         // GASのウェブアプリはリダイレクトを伴うため、ブラウザからのCORSエラーを避けるために 'no-cors' モードで送信します。
         // これによりレスポンスの取得は制限されますが、スプレッドシートへのデータの書き込みは正常に行われます。
-        await fetch(APP_CONFIG.GOOGLE_SHEETS_WEBHOOK_URL, {
+        await fetch(url, {
             method: 'POST',
             mode: 'no-cors',
             headers: {
@@ -332,6 +343,100 @@ async function syncToGoogleSheets(habitName, dateStr, status) {
     } catch (error) {
         console.error('スプレッドシート同期エラー:', error);
     }
+}
+
+// --- 設定（スプレッドシート同期）連携 ---
+const btnSettingsToggle = document.getElementById('btn-settings-toggle');
+const settingsPanel = document.getElementById('settings-panel');
+const settingsForm = document.getElementById('settings-form');
+const webhookUrlInput = document.getElementById('webhook-url-input');
+const btnClearSettings = document.getElementById('btn-clear-settings');
+const settingsStatusMsg = document.getElementById('settings-status-msg');
+const syncWarningBanner = document.getElementById('sync-warning-banner');
+
+// 同期状態に応じたUIの切り替え
+function updateSyncStatusUI() {
+    const url = getWebhookUrl();
+    if (url) {
+        if (webhookUrlInput) webhookUrlInput.value = url;
+        if (btnClearSettings) btnClearSettings.style.display = 'inline-block';
+        if (syncWarningBanner) syncWarningBanner.style.display = 'none';
+        if (btnSettingsToggle) btnSettingsToggle.style.color = 'var(--success)'; // 設定済みは緑アイコンに
+    } else {
+        if (webhookUrlInput) webhookUrlInput.value = '';
+        if (btnClearSettings) btnClearSettings.style.display = 'none';
+        if (syncWarningBanner) syncWarningBanner.style.display = 'flex';
+        if (btnSettingsToggle) btnSettingsToggle.style.color = 'var(--text-muted)';
+    }
+}
+
+// 設定パネルの開閉
+function toggleSettingsPanel() {
+    if (!settingsPanel) return;
+    if (settingsPanel.style.display === 'none') {
+        settingsPanel.style.display = 'block';
+        if (settingsStatusMsg) {
+            settingsStatusMsg.textContent = '';
+            settingsStatusMsg.className = 'settings-status-msg';
+        }
+    } else {
+        settingsPanel.style.display = 'none';
+    }
+}
+
+// 設定の保存処理
+if (settingsForm) {
+    settingsForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const url = webhookUrlInput.value.trim();
+        
+        if (!url.startsWith('https://script.google.com/')) {
+            if (settingsStatusMsg) {
+                settingsStatusMsg.textContent = '❌ 有効なGoogle Apps ScriptのURL（https://script.google.com/...）を入力してください。';
+                settingsStatusMsg.className = 'settings-status-msg error';
+            }
+            return;
+        }
+
+        localStorage.setItem('yuppi_webhook_url', url);
+        if (settingsStatusMsg) {
+            settingsStatusMsg.textContent = '✅ 設定を保存しました！同期が有効です。';
+            settingsStatusMsg.className = 'settings-status-msg success';
+        }
+
+        updateSyncStatusUI();
+        
+        // 1.5秒後に自動的にパネルを閉じる
+        setTimeout(() => {
+            if (settingsPanel) settingsPanel.style.display = 'none';
+        }, 1500);
+    });
+}
+
+// 連携解除処理
+if (btnClearSettings) {
+    btnClearSettings.addEventListener('click', () => {
+        if (confirm('スプレッドシートとの同期連携を解除しますか？')) {
+            localStorage.removeItem('yuppi_webhook_url');
+            if (settingsStatusMsg) {
+                settingsStatusMsg.textContent = '連携を解除しました。';
+                settingsStatusMsg.className = 'settings-status-msg';
+            }
+            updateSyncStatusUI();
+            
+            setTimeout(() => {
+                if (settingsPanel) settingsPanel.style.display = 'none';
+            }, 1000);
+        }
+    });
+}
+
+// クリックイベントの紐付け
+if (btnSettingsToggle) {
+    btnSettingsToggle.addEventListener('click', toggleSettingsPanel);
+}
+if (syncWarningBanner) {
+    syncWarningBanner.addEventListener('click', toggleSettingsPanel);
 }
 
 // --- 名言API連携 ---
@@ -397,7 +502,7 @@ document.addEventListener('DOMContentLoaded', () => {
     loadHabits();
     renderHabits();
     fetchQuote(); // 名言の初期ロード
-
+    updateSyncStatusUI(); // 同期状態UIの初期化
     if (btnRefreshQuote) {
         btnRefreshQuote.addEventListener('click', fetchQuote);
     }

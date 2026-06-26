@@ -1,0 +1,22 @@
+# 機密情報ファイル (APIキーやトークン)
+.env
+.env.local
+.env.*.local
+*.env
+
+# macOS システム一時ファイル
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+
+# Windows システム一時ファイル
+Thumbs.db
+ehthumbs.db
+
+# ログファイル
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*

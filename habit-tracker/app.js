@@ -320,15 +320,16 @@ async function fetchQuote() {
     // アニメーション完了（250ms）を待ってからデータを差し替え
     setTimeout(async () => {
         try {
-            // APIリクエスト (日本語名言API)
-            const response = await fetch('https://meigen.doodlenote.net/api/json.php');
-            if (!response.ok) throw new Error('API request failed');
+            // JSONファイルをフェッチ
+            const response = await fetch('quotes.json');
+            if (!response.ok) throw new Error('Failed to load quotes.json');
             
             const data = await response.json();
-            // 返却値は配列形式: [{"meigen":"...","auther":"..."}]
+            // 配列形式: [{"meigen":"...","auther":"..."}, ...]
             if (data && data.length > 0) {
-                quoteText.textContent = `「${data[0].meigen}」`;
-                quoteAuthor.textContent = `— ${data[0].auther || '不明'}`;
+                const randomQuote = data[Math.floor(Math.random() * data.length)];
+                quoteText.textContent = `「${randomQuote.meigen}」`;
+                quoteAuthor.textContent = `— ${randomQuote.auther || '不明'}`;
             } else {
                 throw new Error('Empty data');
             }

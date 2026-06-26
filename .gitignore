@@ -3,6 +3,8 @@
 .env.local
 .env.*.local
 *.env
+habit-tracker/config.js
+
 
 # macOS システム一時ファイル
 .DS_Store

@@ -286,14 +286,52 @@ function toggleHabit(habitId, dateStr) {
     const habit = habits.find(h => h.id === habitId);
     if (!habit) return;
 
+    let isCompleted = false;
+
     if (habit.history[dateStr]) {
         delete habit.history[dateStr];
+        isCompleted = false;
     } else {
         habit.history[dateStr] = true;
+        isCompleted = true;
     }
 
     saveHabits();
     renderHabits();
+
+    // Googleスプレッドシートへの同期を実行
+    syncToGoogleSheets(habit.name, dateStr, isCompleted ? 'completed' : 'uncompleted');
+}
+
+// Googleスプレッドシートへのデータ同期送信
+async function syncToGoogleSheets(habitName, dateStr, status) {
+    // Webhook URLが設定されていない場合は同期をスキップ
+    if (!APP_CONFIG || !APP_CONFIG.GOOGLE_SHEETS_WEBHOOK_URL) {
+        console.log('スプレッドシートの同期URLが設定されていません。同期をスキップします。');
+        return;
+    }
+
+    const payload = {
+        date: dateStr,
+        habitName: habitName,
+        status: status
+    };
+
+    try {
+        // GASのウェブアプリはリダイレクトを伴うため、ブラウザからのCORSエラーを避けるために 'no-cors' モードで送信します。
+        // これによりレスポンスの取得は制限されますが、スプレッドシートへのデータの書き込みは正常に行われます。
+        await fetch(APP_CONFIG.GOOGLE_SHEETS_WEBHOOK_URL, {
+            method: 'POST',
+            mode: 'no-cors',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(payload)
+        });
+        console.log(`スプレッドシート同期送信成功: "${habitName}" (${dateStr}) - ${status}`);
+    } catch (error) {
+        console.error('スプレッドシート同期エラー:', error);
+    }
 }
 
 // --- 名言API連携 ---

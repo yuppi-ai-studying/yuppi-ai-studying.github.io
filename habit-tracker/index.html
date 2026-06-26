@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>📊 習慣トラッカー | Habit Tracker</title>
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <script src="app.js" defer></script>
+</head>
+<body>
+    <div class="app-container">
+        <!-- ヘッダー -->
+        <header>
+            <div class="logo">
+                <span class="logo-emoji">📊</span>
+                <h1>Habit Tracker</h1>
+            </div>
+            <p class="subtitle">毎日の小さな積み重ねを記録しよう</p>
+        </header>
+
+        <!-- 新規追加フォーム -->
+        <section class="add-habit-section">
+            <form id="habit-form" class="habit-form">
+                <div class="input-group">
+                    <input type="text" id="habit-input" placeholder="新しい習慣を入力（例: 読書、筋トレ）" required maxlength="25">
+                    <button type="submit" class="btn-add">
+                        <i class="fa-solid fa-plus"></i> 追加
+                    </button>
+                </div>
+            </form>
+        </section>
+
+        <!-- 統計サマリー (全体の達成状況) -->
+        <section class="summary-section" id="summary-section" style="display: none;">
+            <div class="card summary-card">
+                <div class="summary-info">
+                    <h3>全体の進捗</h3>
+                    <p class="summary-desc">登録している習慣の今日の達成状況です</p>
+                    <div class="progress-container-global">
+                        <div class="progress-bar-global" id="global-progress-bar" style="width: 0%"></div>
+                    </div>
+                </div>
+                <div class="summary-stat">
+                    <span id="global-progress-percentage" class="stat-number">0%</span>
+                    <span class="stat-label">今日の達成率</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- 習慣リスト -->
+        <main class="habit-list-container">
+            <div class="list-header">
+                <h2>登録中の習慣</h2>
+                <span class="date-range-label" id="date-range-label">直近7日間</span>
+            </div>
+            
+            <div id="habit-list" class="habit-list">
+                <!-- JavaScriptで動的にカードが追加されます -->
+                <div class="empty-state" id="empty-state">
+                    <i class="fa-regular fa-calendar-check empty-icon"></i>
+                    <p>習慣が登録されていません。上のフォームから追加してみましょう！</p>
+                </div>
+            </div>
+        </main>
+
+        <!-- フッター -->
+        <footer>
+            <p>&copy; 2026 yuppi-ai-studying. All rights reserved.</p>
+            <a href="../index.html" class="back-link"><i class="fa-solid fa-arrow-left"></i> プロフィールに戻る</a>
+        </footer>
+    </div>
+</body>
+</html>

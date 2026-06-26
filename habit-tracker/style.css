@@ -1,0 +1,499 @@
+/* ==========================================
+   📊 Habit Tracker Custom Stylesheet
+   ========================================== */
+
+:root {
+    --primary: #4F46E5;        /* インディゴブルー */
+    --primary-light: #EEF2F6;
+    --primary-gradient: linear-gradient(135deg, #6366F1 0%, #4F46E5 100%);
+    --success: #10B981;        /* エメラルドグリーン */
+    --success-gradient: linear-gradient(135deg, #34D399 0%, #059669 100%);
+    --danger: #EF4444;         /* ローズレッド */
+    --bg-app: #F8FAFC;         /* 明るくクリーンなグレーベージュ */
+    --card-bg: #FFFFFF;
+    --text-main: #0F172A;      /* 深いスレート色 */
+    --text-muted: #64748B;
+    --border-color: #E2E8F0;
+    --radius-sm: 8px;
+    --radius-md: 16px;
+    --radius-lg: 24px;
+    --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.05);
+    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.05), 0 4px 6px -2px rgba(0, 0, 0, 0.03);
+    --shadow-premium: 0 20px 25px -5px rgba(99, 102, 241, 0.05), 0 10px 10px -5px rgba(99, 102, 241, 0.02);
+    --transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* 基本設定 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    background-color: var(--bg-app);
+    color: var(--text-main);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.app-container {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 40px 20px;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* ヘッダー */
+header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.logo {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    margin-bottom: 8px;
+}
+
+.logo-emoji {
+    font-size: 2.2rem;
+    animation: float 3s ease-in-out infinite;
+}
+
+h1 {
+    font-size: 2rem;
+    font-weight: 700;
+    letter-spacing: -0.025em;
+    background: var(--primary-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.subtitle {
+    color: var(--text-muted);
+    font-size: 0.95rem;
+    font-weight: 400;
+}
+
+/* 新規追加フォーム */
+.add-habit-section {
+    margin-bottom: 30px;
+}
+
+.habit-form {
+    width: 100%;
+}
+
+.input-group {
+    display: flex;
+    gap: 12px;
+    background: var(--card-bg);
+    padding: 8px;
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-sm);
+    border: 1px solid var(--border-color);
+    transition: var(--transition);
+}
+
+.input-group:focus-within {
+    border-color: #6366F1;
+    box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.1), var(--shadow-md);
+}
+
+.input-group input {
+    flex: 1;
+    border: none;
+    outline: none;
+    font-size: 1rem;
+    padding: 8px 12px;
+    color: var(--text-main);
+    background: transparent;
+    font-family: inherit;
+}
+
+.input-group input::placeholder {
+    color: var(--text-muted);
+}
+
+.btn-add {
+    background: var(--primary-gradient);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: var(--radius-sm);
+    font-weight: 600;
+    font-size: 0.95rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    transition: var(--transition);
+}
+
+.btn-add:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(79, 70, 229, 0.25);
+    filter: brightness(1.05);
+}
+
+.btn-add:active {
+    transform: translateY(0);
+}
+
+/* 統計サマリー */
+.summary-section {
+    margin-bottom: 35px;
+    animation: fadeIn 0.4s ease-out;
+}
+
+.card {
+    background: var(--card-bg);
+    border-radius: var(--radius-md);
+    padding: 24px;
+    box-shadow: var(--shadow-md);
+    border: 1px solid var(--border-color);
+}
+
+.summary-card {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+}
+
+.summary-info {
+    flex: 1;
+}
+
+.summary-info h3 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 4px;
+}
+
+.summary-desc {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    margin-bottom: 12px;
+}
+
+.progress-container-global {
+    width: 100%;
+    height: 10px;
+    background-color: var(--primary-light);
+    border-radius: 999px;
+    overflow: hidden;
+}
+
+.progress-bar-global {
+    height: 100%;
+    background: var(--success-gradient);
+    border-radius: 999px;
+    transition: width 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.summary-stat {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: var(--primary-light);
+    padding: 16px;
+    border-radius: var(--radius-md);
+    min-width: 100px;
+}
+
+.stat-number {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--primary);
+    line-height: 1.2;
+}
+
+.stat-label {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    font-weight: 500;
+    margin-top: 4px;
+}
+
+/* 習慣リスト */
+.habit-list-container {
+    flex: 1;
+}
+
+.list-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 16px;
+}
+
+.list-header h2 {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--text-main);
+}
+
+.date-range-label {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    font-weight: 500;
+    background: var(--border-color);
+    padding: 4px 10px;
+    border-radius: 999px;
+}
+
+.habit-list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+/* 各習慣カード */
+.habit-card {
+    background: var(--card-bg);
+    border-radius: var(--radius-md);
+    border: 1px solid var(--border-color);
+    box-shadow: var(--shadow-sm);
+    padding: 20px;
+    transition: var(--transition);
+    animation: slideUp 0.3s ease-out;
+}
+
+.habit-card:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-premium);
+}
+
+.habit-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 16px;
+}
+
+.habit-title {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--text-main);
+}
+
+.btn-delete {
+    background: transparent;
+    border: none;
+    color: var(--text-muted);
+    cursor: pointer;
+    font-size: 0.95rem;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: var(--transition);
+}
+
+.btn-delete:hover {
+    background-color: #FEE2E2;
+    color: var(--danger);
+}
+
+/* 日付グリッド (過去7日間) */
+.history-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 8px;
+    margin-bottom: 16px;
+}
+
+.day-column {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+}
+
+.day-label {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    font-weight: 500;
+}
+
+.date-label {
+    font-size: 0.7rem;
+    color: var(--text-muted);
+    margin-top: -4px;
+    opacity: 0.8;
+}
+
+/* チェックマークボタン */
+.btn-check {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    border: 2px solid var(--border-color);
+    background-color: transparent;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: transparent;
+    font-size: 0.9rem;
+    transition: var(--transition);
+}
+
+.btn-check:hover {
+    border-color: var(--primary);
+    background-color: var(--primary-light);
+}
+
+/* チェック完了状態 */
+.btn-check.completed {
+    background: var(--success-gradient);
+    border-color: transparent;
+    color: white;
+    box-shadow: 0 4px 10px rgba(16, 185, 129, 0.3);
+    animation: pop 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+
+/* 習慣内の統計情報 */
+.habit-stats {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 14px;
+    border-top: 1px dashed var(--border-color);
+    font-size: 0.85rem;
+}
+
+.streak-info {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-weight: 600;
+    color: #F59E0B; /* オレンジ・ゴールド */
+}
+
+.streak-count {
+    font-size: 1rem;
+}
+
+.weekly-rate {
+    color: var(--text-muted);
+}
+
+.rate-value {
+    color: var(--primary);
+    font-weight: 600;
+}
+
+/* 空の状態 */
+.empty-state {
+    text-align: center;
+    padding: 60px 20px;
+    background: var(--card-bg);
+    border-radius: var(--radius-md);
+    border: 1px dashed var(--border-color);
+    color: var(--text-muted);
+}
+
+.empty-icon {
+    font-size: 3rem;
+    color: var(--text-muted);
+    opacity: 0.4;
+    margin-bottom: 16px;
+}
+
+.empty-state p {
+    font-size: 0.95rem;
+}
+
+/* フッター */
+footer {
+    text-align: center;
+    margin-top: 40px;
+    padding-top: 20px;
+    border-top: 1px solid var(--border-color);
+    color: var(--text-muted);
+    font-size: 0.85rem;
+}
+
+footer p {
+    margin-bottom: 12px;
+}
+
+.back-link {
+    color: var(--primary);
+    text-decoration: none;
+    font-weight: 500;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    transition: var(--transition);
+}
+
+.back-link:hover {
+    color: #3730A3;
+    transform: translateX(-2px);
+}
+
+/* ==========================================
+   🔑 Animations
+   ========================================== */
+
+@keyframes float {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-6px); }
+    100% { transform: translateY(0px); }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes pop {
+    0% { transform: scale(0.8); }
+    50% { transform: scale(1.15); }
+    100% { transform: scale(1); }
+}
+
+/* スマホ表示の最適化 */
+@media (max-width: 480px) {
+    .app-container {
+        padding: 20px 10px;
+    }
+
+    h1 {
+        font-size: 1.7rem;
+    }
+
+    .btn-check {
+        width: 36px;
+        height: 36px;
+        font-size: 0.8rem;
+    }
+
+    .summary-card {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .summary-stat {
+        width: 100%;
+    }
+}

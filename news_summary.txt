@@ -1,27 +1,27 @@
 ==================================================
- 📰 Yahoo!ニュース 主要トピックス一覧 (取得日時: 2026-06-28 00:51:07)
+ 📰 Yahoo!ニュース 主要トピックス一覧 (取得日時: 2026-06-28 05:42:57)
 ==================================================
 
-[1] 太平洋防衛へ無人潜水艇 政府検討
-    URL: https://news.yahoo.co.jp/pickup/6585938
+[1] 青森・岩手で震度5弱 津波なし
+    URL: https://news.yahoo.co.jp/pickup/6585939
 
 [2] 28日 雨が止んでも土砂災害に警戒
     URL: https://news.yahoo.co.jp/pickup/6585937
 
-[3] タイヤにワイヤー絡まり横転 死亡
+[3] 太平洋防衛へ無人潜水艇 政府検討
+    URL: https://news.yahoo.co.jp/pickup/6585938
+
+[4] タイヤにワイヤー絡まり横転 死亡
     URL: https://news.yahoo.co.jp/pickup/6585934
 
-[4] 無音の110番通報 川で溺れ2人死亡
+[5] 無音の110番通報 川で溺れ2人死亡
     URL: https://news.yahoo.co.jp/pickup/6585928
 
-[5] 川に車転落 流されそうな2歳救助
+[6] 川に車転落 流されそうな2歳救助
     URL: https://news.yahoo.co.jp/pickup/6585926
 
-[6] イチロー氏の走り 末續氏ガチ採点
+[7] イチロー氏の走り 末續氏ガチ採点
     URL: https://news.yahoo.co.jp/pickup/6585933
-
-[7] 香取慎吾 SNSのコメント全部見る
-    URL: https://news.yahoo.co.jp/pickup/6585923
 
 [8] 結婚の倉持明日香 小橋建太氏証人
     URL: https://news.yahoo.co.jp/pickup/6585911

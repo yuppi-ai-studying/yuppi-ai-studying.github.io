@@ -1,28 +1,31 @@
 ==================================================
- 📰 Yahoo!ニュース 主要トピックス一覧 (取得日時: 2026-06-28 05:42:57)
+ 📰 Yahoo!ニュース 主要トピックス一覧 (取得日時: 2026-06-28 19:09:23)
 ==================================================
 
-[1] 青森・岩手で震度5弱 津波なし
-    URL: https://news.yahoo.co.jp/pickup/6585939
+[1] 賃金の地域間格差15万円超に 25年
+    URL: https://news.yahoo.co.jp/pickup/6586019
 
-[2] 28日 雨が止んでも土砂災害に警戒
-    URL: https://news.yahoo.co.jp/pickup/6585937
+[2] 比例45減なら中小政党へ影響 試算
+    URL: https://news.yahoo.co.jp/pickup/6586011
 
-[3] 太平洋防衛へ無人潜水艇 政府検討
-    URL: https://news.yahoo.co.jp/pickup/6585938
+[3] 5歳不明1週間 母「後悔やまない」
+    URL: https://news.yahoo.co.jp/pickup/6586015
 
-[4] タイヤにワイヤー絡まり横転 死亡
-    URL: https://news.yahoo.co.jp/pickup/6585934
+[4] タクシーが自転車をはねる 死亡
+    URL: https://news.yahoo.co.jp/pickup/6586027
 
-[5] 無音の110番通報 川で溺れ2人死亡
-    URL: https://news.yahoo.co.jp/pickup/6585928
+[5] 「軽タクシー」解禁 現場の違和感
+    URL: https://news.yahoo.co.jp/pickup/6586013
 
-[6] 川に車転落 流されそうな2歳救助
-    URL: https://news.yahoo.co.jp/pickup/6585926
+[6] 高橋遥人 球団79年ぶり開幕10連勝
+    URL: https://news.yahoo.co.jp/pickup/6586020
 
-[7] イチロー氏の走り 末續氏ガチ採点
-    URL: https://news.yahoo.co.jp/pickup/6585933
+[7] 天国から地獄 イランがW杯敗退
+    URL: https://news.yahoo.co.jp/pickup/6586016
 
-[8] 結婚の倉持明日香 小橋建太氏証人
-    URL: https://news.yahoo.co.jp/pickup/6585911
+[8] 美輪明宏さん死去 直筆文でお別れ
+    URL: https://news.yahoo.co.jp/pickup/6586001
+
+[9] 0:46タクシーが自転車をはねる 死亡
+    URL: https://news.yahoo.co.jp/pickup/6586027
 

@@ -22,3 +22,6 @@ ehthumbs.db
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+# X (Twitter) ログインセッション情報 (ローカルのみ保持)
+auth_state.json

@@ -34,11 +34,19 @@ jobs:
           pip install requests beautifulsoup4 playwright
           playwright install --with-deps chromium
 
+      - name: Create auth_state.json from secret
+        run: echo "$X_COOKIE_DATA" > auth_state.json
+        env:
+          X_COOKIE_DATA: ${{ secrets.X_COOKIE }}
+
       - name: Run scraper
         run: python web_scraper.py
 
       - name: Run weather bot
         run: python weather_bot.py
+
+      - name: Run Twitter bot
+        run: python twitter_bot.py
 
       - name: Commit and push changes
         run: |

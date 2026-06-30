@@ -93,10 +93,12 @@ def run_bot(message=None):
     # 2. 自動投稿モード (Cookieがある場合)
     print("🤖 ログインセッションをロードして、自動投稿を開始します...")
     with sync_playwright() as p:
-        # 2回目以降は headless=True (画面なしの裏側) で高速実行
+        # 2回目以降は本物のGoogle Chromeを headless=True で実行
+        # (GitHub Actionsのクラウド上ではChromeアプリが入っていないため、デフォルト的のChromiumを使用)
+        is_actions = os.environ.get("GITHUB_ACTIONS") == "true"
         browser = p.chromium.launch(
             headless=True,
-            channel="chrome",
+            channel=None if is_actions else "chrome",
             args=["--disable-blink-features=AutomationControlled"]
         )
         

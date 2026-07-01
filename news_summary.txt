@@ -1,28 +1,28 @@
 ==================================================
- 📰 Yahoo!ニュース 主要トピックス一覧 (取得日時: 2026-07-01 19:59:07)
+ 📰 Yahoo!ニュース 主要トピックス一覧 (取得日時: 2026-07-02 03:26:24)
 ==================================================
 
-[1] 自民と維新 国会審議巡り覚書調整
-    URL: https://news.yahoo.co.jp/pickup/6586371
+[1] 西-東日本で大雨 河川増水に警戒
+    URL: https://news.yahoo.co.jp/pickup/6586403
 
-[2] モバイルSuica 不具合が解消
-    URL: https://news.yahoo.co.jp/pickup/6586374
+[2] 麻生太郎氏 高市政権の実績を評価
+    URL: https://news.yahoo.co.jp/pickup/6586401
 
-[3] 山に遺体 クマが人を獲物と認識か
+[3] スペイン 熱波で1000人以上死亡
+    URL: https://news.yahoo.co.jp/pickup/6586395
+
+[4] 行方不明の10歳死亡 校長が陳謝
+    URL: https://news.yahoo.co.jp/pickup/6586389
+
+[5] 山に遺体 クマが人を獲物と認識か
     URL: https://news.yahoo.co.jp/pickup/6586361
 
-[4] 不同意わいせつ疑い 市議書類送検
-    URL: https://news.yahoo.co.jp/pickup/6586379
+[6] PS新作ゲーム ディスク版終了へ
+    URL: https://news.yahoo.co.jp/pickup/6586400
 
-[5] スムージー再び半額へ セブン対策
-    URL: https://news.yahoo.co.jp/pickup/6586377
+[7] 森保氏に続投要請へ サッカー協会
+    URL: https://news.yahoo.co.jp/pickup/6586386
 
-[6] 伊東純也 今後の代表活動に言及
-    URL: https://news.yahoo.co.jp/pickup/6586367
-
-[7] 山下健二郎の番組終了 広告主事情
-    URL: https://news.yahoo.co.jp/pickup/6586381
-
-[8] 佐藤二朗 橋本愛に「問題行為」
-    URL: https://news.yahoo.co.jp/pickup/6586375
+[8] V.ウィリス氏死去 Y.M.C.A.など
+    URL: https://news.yahoo.co.jp/pickup/6586402
 
